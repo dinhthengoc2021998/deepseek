@@ -1,0 +1,2 @@
+# deepseek
+Use Deepseek local
