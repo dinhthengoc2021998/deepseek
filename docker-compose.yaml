@@ -1,0 +1,28 @@
+version: "3.8"
+services: 
+  open-webui:
+    image: open-webui-custom:latest
+    ports:
+      - 8081:8080
+    volumes:
+      - open-webui:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  ollama:
+    image: ollama-custom:latest
+    hostname: ollama
+    ports:
+      - 11434:11434
+    volumes:
+      - ollama:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  open-webui:
+  ollama:
