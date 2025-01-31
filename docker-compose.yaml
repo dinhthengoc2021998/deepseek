@@ -2,6 +2,9 @@ version: "3.8"
 services: 
   open-webui:
     image: open-webui-custom:latest
+    environment:
+      - BASE_URL=http://ollama:11434
+      - OLLAMA_BASE_URL=http://ollama:11434
     ports:
       - 8081:8080
     volumes:
